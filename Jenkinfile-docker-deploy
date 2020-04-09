@@ -11,8 +11,8 @@ stages {
 // for display purposes
 
       // Get some code from a GitHub repository
-
-      git 'https://github.com/raknas999/GOL-Repo.git'
+      
+      git 'https://github.com/shivanani220/GOL-Repo.git'
 
       // Get the Maven tool.
      
@@ -62,8 +62,8 @@ stages {
     stage('Build and Push Docker Image') {
       steps {
         sh label: '', script: '''docker build -t gameoflife-image:$BUILD_NUMBER .
-                                 docker tag gameoflife-image:$BUILD_NUMBER docker.io/raknas000/gameoflife-image:$BUILD_NUMBER
-                                 docker push docker.io/raknas000/gameoflife-image:$BUILD_NUMBER'''
+                                 docker tag gameoflife-image:$BUILD_NUMBER docker.io/shiva58/gameoflife-image:$BUILD_NUMBER
+                                 docker push docker.io/shiva58/gameoflife-image:$BUILD_NUMBER'''
       }
  }
   stage('Update Image Version') {
@@ -94,7 +94,7 @@ post {
             archiveArtifacts 'gameoflife-web/target/*.war'
         }
         failure {
-            mail to:"raknas000@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
+            mail to:"shivanani58@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
         }
     }       
 }
