@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+    agent {label 'slave-machine'}
     tools { 
         maven 'Maven' 
       
@@ -41,7 +41,7 @@ stages {
       
      }
  }
- stage('Sonarqube') {
+/* stage('Sonarqube') {
     environment {
         def scannerHome = tool 'sonarqube';
     }
@@ -72,5 +72,6 @@ post {
        failure {
            mail to:"raknas000@gmail.com", subject:"FAILURE: ${currentBuild.fullDisplayName}", body: "Build failed"
         }
-    }       
+    } /*      
 }
+
